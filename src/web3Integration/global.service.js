@@ -85,23 +85,24 @@ export async function create(tokenId) {
     return { status, transHash }
 }
 
-export async function getTransHashByPlaceBid(nftID, amount) {
+export async function getTransHashByPlaceBid(nftID, amount,signature) {
     let status
     let transHash
     const params1 =nftID; //randon no 6 digit
-    const params2 = amount;//betAmount;
     const params3 = address;//nftaddress
     
-    const tempSign = ethers.utils.splitSignature('');
+    const tempSign = ethers.utils.splitSignature(signature);
 
-    console.log('info._exchangeContract==========', info._exchangeContract)
+    console.log('info._exchangeContract==========',amount)
     
     try {
-        await info._exchangeContract.submitBet(params1, params2, params3, tempSign)
-        .send({ from: info._account, value: 0, gas: 2100000 })
-        .on('transactionHash', function (transactionHash) {
-            status = false
-            transHash = transactionHash
+       const params2=info._web3.utils.toWei(amount.toString());
+        await info._exchangeContract.submitBet(params1, params2, params3, tempSign.v,tempSign.r,tempSign.s,{
+            value:params2
+        })
+        .then(function (transactionHash) {
+            status = true
+            transHash = transactionHash.hash
         })
         // .on('receipt', function (receipt) {
         //     status = receipt.status

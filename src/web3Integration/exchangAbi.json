@@ -159,16 +159,6 @@
 	  "inputs": [
 		{
 		  "internalType": "address",
-		  "name": "junkAsset",
-		  "type": "address"
-		},
-		{
-		  "internalType": "uint256",
-		  "name": "junkAmount",
-		  "type": "uint256"
-		},
-		{
-		  "internalType": "address",
 		  "name": "nftAsset",
 		  "type": "address"
 		},

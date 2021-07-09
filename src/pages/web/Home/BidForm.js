@@ -8,7 +8,7 @@ import { getTransHashByPlaceBid } from '../../../web3Integration/global.service'
 
 function BidForm(props) {
     const { detailInfo, authData, bidFormSuccess, onRequestLogin, onRequestRegister } = props
-    const { nftID, lastBidPrice, startingPrice, step } = detailInfo
+    const { nftID, lastBidPrice, startingPrice, step,signature } = detailInfo
     const { userId, walletAddress } = authData || {}
     const [formInfo, setFormInfo] = useState({ dateTime: new Date(), userId, walletAddress, nftID, price: (lastBidPrice || startingPrice) })
 
@@ -46,7 +46,7 @@ function BidForm(props) {
     const onClickPlaceBid = () => {
         const { status, isNewUser } = checkAuth(authData)
         if (status) {
-            const { status: transHashStatus, transHash } = getTransHashByPlaceBid(nftID, formInfo.price)
+            const { status: transHashStatus, transHash } = getTransHashByPlaceBid(nftID, formInfo.price,signature)
             console.log('formInfo================', transHashStatus, transHash, formInfo )
             if (transHashStatus) {
                 placeBid({
