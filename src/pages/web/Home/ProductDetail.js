@@ -192,7 +192,7 @@ function ProductDetail(props) {
                                                         <div className="ChainInfo--label-type">Contract Address</div>
                                                         <div className="ChainInfo--label-value"><a className="text-primary"
                                                             href="https://etherscan.io/address/0x495f947276749ce646f68ac8c248420045cb7b5e"
-                                                            rel="" target="_blank">{transactionHash}</a></div>
+                                                            rel="noreferrer" target="_blank">{transactionHash}</a></div>
                                                     </div>
                                                     <div className="ChainInfo--label">
                                                         <div className="ChainInfo--label-type">Physical art work</div>
@@ -226,12 +226,6 @@ function ProductDetail(props) {
                         <div className="col-lg-6">
                             <div className="product__details__text">
                                 <h3>{nftName}</h3>
-                                <div className="product__details__button">
-                                    <ul>
-                                        <li><a className="mr-2" href="#"><span className="icon_heart_alt"></span></a>14</li>
-                                    </ul>
-                                </div>
-
                                 <div className="product__details__price mb-2">
                                     <li>
                                         <span className="circle_img">
@@ -286,7 +280,7 @@ function ProductDetail(props) {
                                                         <div className="ChainInfo--label-type">Contract Address</div>
                                                         <div className="ChainInfo--label-value"><a className="text-primary"
                                                             href="https://etherscan.io/address/0x495f947276749ce646f68ac8c248420045cb7b5e"
-                                                            rel="" target="_blank">{transactionHash}</a></div>
+                                                            rel="noreferrer" target="_blank">{transactionHash}</a></div>
                                                     </div>
                                                     <div className="ChainInfo--label">
                                                         <div className="ChainInfo--label-type">Physical art work</div>
