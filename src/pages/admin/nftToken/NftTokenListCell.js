@@ -21,7 +21,8 @@ function NftTokenListCell(props) {
     const TakeSignature = (nftId, time) => 
     {
         (async () => {
-            const signature = await signMsgAuctionStart(nftId)
+            const info = await signMsgAuctionStart(nftId)
+            const { signature, nftAddress } = info || {}
             if (signature) {
                 postStartAuction({
                     api:postStartAuctionAPI,
@@ -29,7 +30,7 @@ function NftTokenListCell(props) {
                         body: {
                             nftID,
                             auctionTimestamp:Date.parse(time),
-                            nftAddress:"0x790a4B738FdFD8F980Ea04aABDf3833f52af2829",
+                            nftAddress:nftAddress,
                             signature
                         }
                     }

@@ -106,9 +106,7 @@ export async function getTransHashByPlaceBid(nftID, amount,signature) {
             status = true
             transHash = transactionHash.hash
         })
-        // .on('receipt', function (receipt) {
-        //     status = receipt.status
-        // })
+        
     } catch(err) {
         status = false
     }
@@ -132,6 +130,7 @@ export async function getNetworkId() {
 
 export async function signMsgAuctionStart(nftId)
 {
+    var nftAddress=address;
  var a2=info._web3.eth.abi.encodeParameter(
    {
        "order": {
@@ -140,7 +139,7 @@ export async function signMsgAuctionStart(nftId)
        }
    },
    {
-     "nftAsset":address,
+     "nftAsset":nftAddress,
            "seed": nftId
    }
 );
@@ -150,7 +149,7 @@ export async function signMsgAuctionStart(nftId)
 
   var signature = await info.signer.signMessage(a);
 
- return signature;
+ return {signature,nftAddress};
 
 }
 

@@ -33,20 +33,20 @@ function BidForm(props) {
     }, [isPlaceBidLoading, isPlaceBidSuccess, placeBidData])
 
     const onClickMinus = () => {
-        const tempPrice = formInfo.price - step
+        const tempPrice = Number(formInfo.price - step)*1000/1000
         if (tempPrice >= lastBidPrice) {
             setFormInfo({ ...formInfo, price: tempPrice })
         }
     }
     const onClickPlus = () => {
-        const tempPrice = formInfo.price + step
+        const tempPrice = Number(formInfo.price + step)*1000/1000
         setFormInfo({ ...formInfo, price: tempPrice })
     }
 
-    const onClickPlaceBid = () => {
+    const onClickPlaceBid = async () => {
         const { status, isNewUser } = checkAuth(authData)
         if (status) {
-            const { status: transHashStatus, transHash } = getTransHashByPlaceBid(nftID, formInfo.price,signature)
+            const { status: transHashStatus, transHash } =await getTransHashByPlaceBid(nftID, formInfo.price,signature)
             console.log('formInfo================', transHashStatus, transHash, formInfo )
             if (transHashStatus) {
                 placeBid({

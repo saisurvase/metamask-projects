@@ -70,11 +70,11 @@ function FormComponent(props) {
       
         const { status, formValidationMessage } = validation({ ...formInfo, description: editorValue })
         setValidationMessage(formValidationMessage)
-        // if (status) {
+         if (status) {
           console.log(formInfo, editorValue, type )
           console.log('status check ', status)
             onClickFormSubmit({ ...formInfo, description: editorValue || '' }, type)
-        // }
+         }
     }
 
     const onChangePropertiesKey = (index, Key) => {
