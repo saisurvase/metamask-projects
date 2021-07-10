@@ -1,14 +1,28 @@
-import React from 'react'
-import DatePicker from "react-datepicker"
+import React from "react";
+import DatePicker from "react-datepicker";
 
 function DateTimePicker(props) {
-    const { placeholder = "Date and time", selectedDateTime, isShowTime, onChange } = props
-    
-    return (
-        <div>
-            <DatePicker placeholderText={placeholder} dateFormat="Pp" className="form-control" selected={selectedDateTime && new Date(selectedDateTime) || ''} showTimeSelect={isShowTime} onChange={onChange} />
-        </div>
-    )
+  const {
+    placeholder = "Date and time",
+    selectedDateTime,
+    isShowTime,
+    onChange,
+    minDate,
+  } = props;
+
+  return (
+    <div>
+      <DatePicker
+        placeholderText={placeholder}
+        dateFormat="Pp"
+        className="form-control"
+        selected={(selectedDateTime && new Date(selectedDateTime)) || ""}
+        showTimeSelect={isShowTime}
+        onChange={onChange}
+        minDate={new Date()}
+      />
+    </div>
+  );
 }
 
-export default DateTimePicker
+export default DateTimePicker;

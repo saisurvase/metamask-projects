@@ -25,12 +25,8 @@ function NftTokenListComponent(props) {
     const { list = [], type, onClickAction } = props;
     const [nftId, setNftId] = useState(undefined)
     const [nftName, setNftname] = useState(undefined)
-    const [elias, setElias] = useState({})
-
-
-    const handleOnChange =(e)=>{
-
-    }
+    const [searchName, setSearchName]= useState('')
+  
 
 
     // console.log('list is here ==================', list)
@@ -53,9 +49,17 @@ function NftTokenListComponent(props) {
                         <th></th>
                     </tr>
                 </thead>
-           
+  
                 <tbody>
-                    {list.map(item => {
+                    {list.filter(item =>  {
+                        if (searchName == "") {
+                            return item
+                        }else if(item.nftName.toLowerCase().includes(searchName.toLowerCase())){
+                            return item
+                        }else if(item.nftID.toString().includes(searchName)){
+                            return item
+                        }
+                    }).map(item => {
                         return <NftTokenListCell item={item} onClickAction={onClickAction} />
                     })}
                 </tbody>
@@ -78,18 +82,15 @@ function NftTokenListComponent(props) {
                                         <h6>NFT Id</h6>
                                         <input type="text" className="form-control" placeholder="Search with NFT id" 
                                         value={nftName} 
-                                        onChange={e => handleOnChange({ nftName: e.target.value })}                                         />
+                                        onChange={(e)=> setSearchName(e.target.value)} />                                  
 
                                     </div>
 
                                     <div className="col-lg-6">
                                         <h6>NFT Name</h6>
-
                                         <input type="text" className="form-control" placeholder="Search with NFT name"
                                         value={nftName} 
-                                        onChange={handleOnChange} />
-
-                                        {/* {e => handleOnChange({ nftName: e.target.value })} */}
+                                        onChange={(e)=> setSearchName(e.target.value)} />
                                     </div>
                                 </div>
                                 <hr />

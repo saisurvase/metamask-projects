@@ -43,11 +43,11 @@ function BidForm(props) {
         setFormInfo({ ...formInfo, price: tempPrice })
     }
 
-    const onClickPlaceBid = () => {
+    const onClickPlaceBid = async () => {
         const { status, isNewUser } = checkAuth(authData)
         if (status) {
-            const { status: transHashStatus, transHash } = getTransHashByPlaceBid(nftID, formInfo.price,signature)
-            console.log('formInfo================', transHashStatus, transHash, formInfo )
+            const { status: transHashStatus, transHash } = await getTransHashByPlaceBid(nftID, formInfo.price,signature)
+            // console.log('formInfo================', transHashStatus, transHash, formInfo )
             if (transHashStatus) {
                 placeBid({
                     api: postPlaceBidAPI,

@@ -41,7 +41,7 @@ export const manipulateFetchedData = ({ isMounted, result, dispatch }) => {
 
 export const handleFetch = async ({ api, payload /*, sagaDispatch, userId */ }) => {
   if (payload.token) {
-    console.log('api & payload===========', api, payload)
+    // console.log('api & payload===========', api, payload)
     const withFirstTokenResponse = await fetchData(api, payload)
     // if (withFirstTokenResponse.message === 'jwt expired') {
     //   const refreshedToken = await refreshToken(userId)

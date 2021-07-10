@@ -80,7 +80,6 @@ export async function create(tokenId) {
             status = receipt.status
         })
     } catch(err) {
-        console.log('error message from global service', err)
         status = false
     }
     
